@@ -4,9 +4,10 @@ from rules import Rule
 from conseedset import StartBoardGenerator
 import numpy as np
 from collections import namedtuple
+from printer import *
 
 
-loadORInit = input('Load seed (y/n)?')
+loadORInit = 'y'
 seed = StartBoardGenerator(20, 'startPoints.txt')
 if loadORInit == 'y':
     seed.fileLoad()
@@ -16,10 +17,14 @@ else:
 
 sim = Simulator(Rule(), seed.square_face)
 sim.setSeed(seed.board)
+printer = BlenderPrinter('C:\\Users\\FedEx\\Pictures\\Gol\\')
+printer.printFrame(sim.getCells(), 0)
+#print(sim.getGrowMatrix())
 
-print(sim.getGrowMatrix())
 
-for iter in range(20):
+
+for iter in range(2):
     sim.simulateStep()
-    print('#' + str(iter))
-    print(sim.getGrowMatrix())
+    printer.printFrame(sim.getCells(), iter + 1)
+    #print('#' + str(iter))
+    #print(sim.getGrowMatrix())

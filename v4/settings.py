@@ -12,6 +12,12 @@ class Settings:
         self.consoleMode = False
         self.iteration = 1
 
+    
+    def consInit(self):
+        self.consInitSeedFN()
+        self.consInitRuleFN()
+        self.consInitCountOfIteration()
+
 
     def consInitSeedFN(self):
         self.seedFN = input('Input file name for seed: ')
@@ -26,7 +32,7 @@ class Settings:
 
 
     def saveSettings(self) -> bool:
-        f = open(self.settingsFile, 'w')
+        f = open(self.settingsFN, 'w')
         if f.closed():
             return False
 
@@ -52,7 +58,7 @@ class Settings:
             return False
 
         jsonDict = json.load(f)
-        if 'Settings' not in jsonDict['Settings']:
+        if 'Settings' not in jsonDict:
             return False
 
         js = jsonDict['Settings']

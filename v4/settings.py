@@ -8,6 +8,7 @@ class Settings:
         self.settingsFN = fileName
         self.ruleFN = None
         self.seedFN = None
+        self.pictureDN = None
 
         self.consoleMode = False
         self.iteration = 1
@@ -17,6 +18,7 @@ class Settings:
         self.consInitSeedFN()
         self.consInitRuleFN()
         self.consInitCountOfIteration()
+        self.consInitPictureDN()
 
 
     def consInitSeedFN(self):
@@ -31,6 +33,10 @@ class Settings:
         self.iteration = input("Input count of iteration for simulation:")
 
 
+    def consInitPictureDN(self):
+        self.pictureDN = input('Input directory name for output: ')
+
+
     def saveSettings(self) -> bool:
         f = open(self.settingsFN, 'w')
         if f.closed():
@@ -41,7 +47,8 @@ class Settings:
                 'Iteration' : self.iteration,
                 'Console mode' : self.consoleMode,
                 'Rule FN' : self.ruleFN,
-                'Seed FN' : self.seedFN
+                'Seed FN' : self.seedFN,
+                'Picture DN' : self.pictureDN
             }
         }
 
@@ -67,6 +74,7 @@ class Settings:
         self.consoleMode    = js['Console mode']
         self.ruleFN         = js['Rule FN']
         self.seedFN         = js['Seed FN'] 
+        self.pictureDN      = js['Picture DN']
 
         f.close()
 

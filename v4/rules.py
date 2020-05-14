@@ -59,11 +59,17 @@ class Rule:
     def jsonToObj(self, fileName):
         f = open(fileName, 'r')
         jsonDict = json.load(f)
+
+        if 'Rule' not in jsonDict:
+            return False
+
         jr = jsonDict['Rule']
         self.appear = range(jr['appear_range']['start'], jr['appear_range']['stop'])
         self.surv   = range(jr['survival_range']['start'], jr['survival_range']['stop']) 
         self.radius = jr['radius']
         f.close()
+
+        return True
 
 
 

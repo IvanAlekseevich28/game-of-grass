@@ -1,4 +1,3 @@
-from simulator import Cell
 import time
 import bpy
 import os

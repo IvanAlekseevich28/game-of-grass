@@ -3,9 +3,9 @@ from printer import BlenderPrinter
 import json
 
 
-f = open('outputDir.json', '+')
+f = open('outputDir.json', 'r')
 jsonDict = json.load(f)
-
+f.close()
 outputDir = str()
 if 'output directory' not in jsonDict:
     outputDir = input('Input output dir: ')
@@ -16,6 +16,7 @@ if 'data file name' not in jsonDict:
     dataFN = input('Input data file name: ')
     jsonDict.update({'data file name' : dataFN})
 
+f = open('outputDir.json', 'w')
 json.dump(jsonDict, f, indent=4)
 f.close()
 

@@ -6,6 +6,7 @@ import numpy as np
 from collections import namedtuple
 from settings import Settings
 from frame import *
+from menu import *
 
 
 settings = Settings('settings.json')
@@ -28,20 +29,29 @@ if not isSuccessfullyLoadS:
     seed.consInit()
     seed.fileSave()
 
+while True:
+    action = askAction(mainMenu)
+    if action == 1:
+        def startSim()
+        break
+    elif action == 2
 
 
-sim = Simulator(Rule(), seed.square_face)
-sim.setSeed(seed.board)
 
-print(sim.getGrowMatrix())
 
-frames = list()
+def startSim():
+    sim = Simulator(Rule(), seed.square_face)
+    sim.setSeed(seed.board)
 
-for iter in range(int(settings.iteration)):
-    sim.simulateStep()
-    frames.append(sim.getCells())
-
-    print('#' + str(iter))
     print(sim.getGrowMatrix())
 
-frameToJsonFile(frames, settings.pictureDN, True)
+    frames = list()
+
+    for iter in range(int(settings.iteration)):
+        sim.simulateStep()
+        frames.append(sim.getCells())
+
+        print('#' + str(iter))
+        print(sim.getGrowMatrix())
+
+    frameToJsonFile(frames, settings.pictureDN, True)

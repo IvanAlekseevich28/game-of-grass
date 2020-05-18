@@ -22,4 +22,4 @@ def askAction(menu: list) -> int:
 
 
 def askIterations() -> int:
-    
+    return int(input("Input count of iterations: "))

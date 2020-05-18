@@ -1,14 +1,20 @@
 from collections import namedtuple
-from grass import Grass
+from grass import *
 import json
 
 
 class Rule:
 
-    def __init__(self, appear_range = range(3,4), survival_range = range(2,4), radius = 1):
+    def __init__(self, appear_range = range(3,4), survival_range = range(2,4), radius = 1, PMR = 0, PU = 0, MxG = 1):
+        # Classic rule
         self.appear = appear_range
         self.surv = survival_range
-        self.radius = radius        # Raduis of search neighbours e.g. 1->8, 2->24, 5->120
+        self.radius = radius        # Radius of search neighbours e.g. 1->8, 2->24, 5->120
+
+        # Soil addon
+        self.PMR = PMR              # Power migration rule.
+        self.PU  = PU               # Power usage.
+        self.MxG = MxG              # Max grow
 
 
     def consInit(self):
@@ -18,7 +24,21 @@ class Rule:
         startS, stopS = input("Input survival range (start stop(" + str(maxStopValue) +")): ").split()
         self.appear = range(int(startA), int(stopA))
         self.surv = range(int(startS), int(stopS))
+
+        self.PMR = int(input("Power migration on step: "))
+        self.PU  = int(input("Power usage for grow:    "))
+        self.MxG = int(input("Max grow for grass:      "))
         print("Done!")
+
+
+    def showSelf(self):
+        print("Rule: ")
+        print("Radius          = " + str(self.radius))
+        print("appear range    = " + str(self.appear))
+        print("survival range  = " + str(self.surv))
+        print("power migration = " + str(self.PMR))
+        print("power usage     = " + str(self.PU))
+        print("max grow        = " + str(self.MxG))
 
 
     def executeRule(self, const_grass : Grass, countNeighbours : int):
@@ -48,7 +68,10 @@ class Rule:
                     'start' : self.surv.start,
                     'stop'  : self.surv.stop
                 },
-                'radius' : self.radius
+                'radius' : self.radius,
+                'PMR'    : self.PMR,
+                'PU'     : self.PU,
+                'MxG'    : self.MxG
             }
         }        
         json.dump(jsonDict, f, indent=4)
@@ -68,6 +91,11 @@ class Rule:
             self.appear = range(jr['appear_range']['start'], jr['appear_range']['stop'])
             self.surv   = range(jr['survival_range']['start'], jr['survival_range']['stop']) 
             self.radius = jr['radius']
+
+            self.PMR = jr['PMR']
+            self.PU  = jr['PU']
+            self.MxG = jr['MxG']
+
             f.close()
         
         except:

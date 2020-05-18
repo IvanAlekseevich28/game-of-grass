@@ -11,7 +11,7 @@ Cell = namedtuple('Cell', ['x', 'y', 'grow', 'color'])
 class Simulator:
     
     def __init__(self, rule : Rule, square_face):
-        self.face   = square_face
+        self.face   = int(square_face)
         self.rule   = rule
         self.field = self.getZeroField()
 

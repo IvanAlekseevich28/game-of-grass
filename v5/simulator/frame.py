@@ -8,6 +8,9 @@ Cell = namedtuple('Cell', ['x', 'y', 'grow', 'color'])
 def frameToJsonFile(listSetNamedtupleOfCells : list,
                     fileName : str,
                     consoleMode = False):
+
+    size = len(listSetNamedtupleOfCells)
+    currentFrameNum = 0
     f = open(fileName, 'w')
 
     frames = list()
@@ -23,7 +26,10 @@ def frameToJsonFile(listSetNamedtupleOfCells : list,
                 }
             })
         frames.append(board)
-
+        currentFrameNum += 1
+        if consoleMode:
+            print(str(int(currentFrameNum / size * 100)) + '%')
+            
     jsonDict = {
         'Frames' : frames
     }

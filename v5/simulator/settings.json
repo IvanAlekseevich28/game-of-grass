@@ -1,9 +1,9 @@
 {
     "Settings": {
+        "Picture DN": "saves/out2.json",
         "Rule FN": "saves/rule1.json",
-        "Seed FN": "saves/seed1.json",
-        "Iteration": "40",
+        "Iteration": 50,
         "Console mode": false,
-        "Picture DN": "saves/out.json"
+        "Seed FN": "saves/seed3.json"
     }
 }

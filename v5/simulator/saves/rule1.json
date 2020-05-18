@@ -1,13 +1,16 @@
 {
     "Rule": {
-        "survival_range": {
-            "start": 2,
-            "stop": 4
-        },
+        "radius": 2,
+        "PMR": 1,
+        "MxG": 1,
+        "PU": 1,
         "appear_range": {
-            "start": 3,
-            "stop": 4
+            "stop": 8,
+            "start": 4
         },
-        "radius": 1
+        "survival_range": {
+            "stop": 10,
+            "start": 3
+        }
     }
 }

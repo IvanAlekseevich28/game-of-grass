@@ -1,5 +1,6 @@
 import json
 
+Grass_maxGrow = 9
 
 class Grass:
     def __init__(self, grow = 0, color = 0):
@@ -16,7 +17,8 @@ class Grass:
 
 
     def toAlive(self):
-        self.grow += 1
+        if self.grow < Grass_maxGrow:
+            self.grow += 1
 
 
     def toDie(self):

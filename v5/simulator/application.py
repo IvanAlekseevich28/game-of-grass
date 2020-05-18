@@ -29,18 +29,12 @@ if not isSuccessfullyLoadS:
     seed.consInit()
     seed.fileSave()
 
-while True:
-    action = askAction(mainMenu)
-    if action == 1:
-        def startSim()
-        break
-    elif action == 2
 
 
 
 
 def startSim():
-    sim = Simulator(Rule(), seed.square_face)
+    sim = Simulator(rule, seed.square_face)
     sim.setSeed(seed.board)
 
     print(sim.getGrowMatrix())
@@ -55,3 +49,46 @@ def startSim():
         print(sim.getGrowMatrix())
 
     frameToJsonFile(frames, settings.pictureDN, True)
+
+
+def setSeed():
+    seed.showSelf()
+    seed.consInit()
+    seed.fileSave()
+
+
+def setRule():
+    rule.showSelf()
+    rule.consInit()
+    rule.objToJson(settings.ruleFN)
+
+
+def setFNSeed():
+    print("Last: "+ settings.seedFN)
+    settings.seedFN = input("Input seed file name: ")
+    settings.saveSettings()
+
+
+def setFNRule():
+    print("Last: "+ settings.ruleFN)
+    settings.ruleFN = input("Input rule file name: ")
+    settings.saveSettings()
+
+
+
+while True:
+    action = askAction(mainMenu)
+    if action == 1:
+        startSim()
+        break
+    elif action == 2:
+        settings.iteration = askIterations()
+        settings.saveSettings()
+    elif action == 3:
+        setSeed()
+    elif action == 4:
+        setRule()
+    elif action == 5:
+        setFNSeed()
+    elif action == 6:
+        setFNRule()

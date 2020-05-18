@@ -7,12 +7,11 @@ bpy.app.debug = True
 
 
 class BlenderPrinter:
-    def __init__(self, countOfFrames, dir_name):
+    def __init__(self, countOfFrames, dir_name, fps = 5):
         print(countOfFrames)
         self.dir_name = dir_name
         self.grass = bpy.context.selected_objects[0]
         self.grasses = []
-        fps = 5
         secPerStep = 4 #constant
         bpy.context.scene.render.fps = fps
         self.framesPerStep = secPerStep*fps

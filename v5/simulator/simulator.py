@@ -3,6 +3,7 @@ from rules import Rule
 from conseedset import StartBoardGenerator
 import numpy as np
 from collections import namedtuple
+from soil import Soil
 
 
 Cell = namedtuple('Cell', ['x', 'y', 'grow', 'color'])
@@ -14,6 +15,7 @@ class Simulator:
         self.face   = int(square_face)
         self.rule   = rule
         self.field = self.getZeroField()
+        self.soil = Soil(square_face, rule.PMR, 1000)
 
 
     def getZeroField(self):
@@ -73,6 +75,11 @@ class Simulator:
                 n = self.getCountOfNeighbours(row, col)
                 oldG = self.field[row][col]
                 newG = self.rule.executeRule(oldG, n)
+                # if newG.isLife():
+                #     if newG.grow > oldG.grow:
+                #         if self.soil.rem_value(row, col, self.rule.PU):
+                #             newG.grow -= 1
+
                 f[row][col] = newG
                 
         self.field = f

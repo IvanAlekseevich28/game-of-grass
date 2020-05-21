@@ -1,1 +1,1 @@
-{"setup": {"fps": 20, "inFN": "frames.json", "outFD": "out"}}
+{"setup": {"fps": 2, "inFN": "out.json", "outFD": "video"}}

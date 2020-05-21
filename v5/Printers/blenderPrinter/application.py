@@ -15,7 +15,6 @@ def appRun():
     print('Frames count = '+str(len(frames)))
 
     printer = BlenderPrinter(len(frames), s.outputDir, s.FPS)
-    #print(sim.getGrowMatrix())
 
 
     iter = 0

@@ -73,13 +73,13 @@ class Setup:
 
 
 
-if __name__ == '__main__':
+"""if __name__ == '__main__':
     s = Setup()
     if s.load():
         s.showSelf()
     else:
         s.consInit()
-        s.save()
+        s.save()"""
     
 
 

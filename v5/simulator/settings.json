@@ -1,9 +1,9 @@
 {
     "Settings": {
-        "Picture DN": "saves/out2.json",
-        "Rule FN": "saves/rule1.json",
-        "Iteration": 50,
+        "Iteration": 10,
         "Console mode": false,
-        "Seed FN": "saves/seed3.json"
+        "Rule FN": "saves/rule1.json",
+        "Seed FN": "saves/seed3.json",
+        "Picture DN": "../Printers/blenderPrinter/out.json"
     }
 }

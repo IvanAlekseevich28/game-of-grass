@@ -5,10 +5,10 @@ import json
 
 class Rule:
 
-    def __init__(self, appear_range = range(3,4), survival_range = range(2,4), radius = 1, PMR = 0, PU = 0, MxG = 1):
+    def __init__(self, appear = range(3,4), survival = range(2,4), radius = 1, PMR = 0, PU = 0, MxG = 1):
         # Classic rule
-        self.appear = appear_range
-        self.surv = survival_range
+        self.appear = appear
+        self.surv = survival
         self.radius = radius        # Radius of search neighbours e.g. 1->8, 2->24, 5->120
 
         # Soil addon
@@ -29,6 +29,16 @@ class Rule:
         self.PU  = int(input("Power usage for grow:    "))
         self.MxG = int(input("Max grow for grass:      "))
         print("Done!")
+
+    def inputIntList(self, forWhy : str, maxStopValue):
+        l = list()
+        print("Input "+ forWhy +" numbers min: 0, max: " + str(maxStopValue) +" : "),
+        try:
+            while(True): 
+                l.append(int(input()))
+        except:
+            pass
+        return l
 
 
     def showSelf(self):
@@ -60,14 +70,8 @@ class Rule:
 
         jsonDict = {
             'Rule' : {
-                'appear_range' : {
-                    'start' : self.appear.start,
-                    'stop'  : self.appear.stop
-                },
-                'survival_range' : {
-                    'start' : self.surv.start,
-                    'stop'  : self.surv.stop
-                },
+                'appear' : list(self.appear),
+                'survival' : list(self.surv),
                 'radius' : self.radius,
                 'PMR'    : self.PMR,
                 'PU'     : self.PU,
@@ -88,8 +92,8 @@ class Rule:
                 return False
 
             jr = jsonDict['Rule']
-            self.appear = range(jr['appear_range']['start'], jr['appear_range']['stop'])
-            self.surv   = range(jr['survival_range']['start'], jr['survival_range']['stop']) 
+            self.appear = jr['appear']
+            self.surv   = jr['survival'] 
             self.radius = jr['radius']
 
             self.PMR = jr['PMR']

@@ -1,4 +1,5 @@
 from collections import namedtuple
+from random import randint
 import json
 
 Point = namedtuple('Point', ['x', 'y'])
@@ -12,10 +13,27 @@ class StartBoardGenerator:
 
     def consInit(self):
         self.square_face = int(input("Input square face: "))
+        mode = input("How to fill board? (Hand/Random)")
+        if mode == 'Hand':
+            self.initHand()
+        else:
+            density = float(input('Input density of life cell (0-1): '))
+            self.initRandom(density)
+        
+
+    def initHand(self):
         count = input("Input count of points: ")
         for _ in range(int(count)):
-            x, y = input("x y: ").split()
+            x, y = int(input("x y: ").split())
             self.board.add(Point(x, y))
+
+
+    def initRandom(self, density = 0.5):
+        for x in range(self.square_face):
+            for y in range(self.square_face):
+                if (randint(1, 101) < density * 100):
+                    self.board.add(Point(x, y))
+
 
 
     def showSelf(self):

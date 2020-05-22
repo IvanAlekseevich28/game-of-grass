@@ -24,8 +24,8 @@ class StartBoardGenerator:
     def initHand(self):
         count = input("Input count of points: ")
         for _ in range(int(count)):
-            x, y = int(input("x y: ").split())
-            self.board.add(Point(x, y))
+            x, y = input("x y: ").split()
+            self.board.add(Point(int(x), int(y)))
 
 
     def initRandom(self, density = 0.5):

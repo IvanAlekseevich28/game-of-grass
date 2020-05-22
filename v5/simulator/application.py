@@ -1,5 +1,4 @@
 from simulator import Simulator
-from grass import Grass
 from rules import Rule
 from conseedset import StartBoardGenerator
 import numpy as np
